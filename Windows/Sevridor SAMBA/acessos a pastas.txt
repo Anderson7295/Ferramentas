@@ -1,0 +1,91 @@
+[publico]
+   path = /home/samba_publico
+   public = yes
+   guest ok = no
+   available = yes
+   browseable = yes
+   writable = yes
+   printable = no
+
+
+
+[global]
+workgroup = grupo
+netbios name = serverteste
+host allow = 192.168.1.
+security = user
+encrypt passwords = true
+smb passwd file = /etc/samba/smbpasswd
+wins support = yes
+os level = 50
+local master = yes
+#
+# COMPARTILHAMENTO DE ARQUIVOS
+#
+[homes]
+comment = Diretório Home
+create mask = 0700
+directory mask = 0700
+browseable = no
+#
+[restrito]
+comment = Acesso somente a usuários autorizados
+path = /home/restrito
+browseable = yes
+public = no
+valid users = @teste1
+#
+[geral]
+comment = Pasta de uso geral
+path = /home/geral
+browseable = yes
+writeable = yes
+valid user = teste1, teste2, teste3
+
+
+
+
+
+
+Criando a pasta e definindo compartilhamento.
+primeiro voce cria a pasta em algum lugar no seu server. da as permissoes para a pasta, pode ser chmod 777 nomedapasta.
+
+depoisto faça um compatilhamento novo e na linha path você coloca o caminho dessa nova pasta assim.
+
+path = /etc/novapasta #pode ser outro caminho, vai depender de você)
+
+aí se você quer restringir essa pasta para determinado usuário coloque esse linha nesse compartilhamento
+
+valid users = nomedousuario
+
+
+
+
+
+TESTAR
+
+[global]
+workgroup = grupo
+netbios name = samba-fera
+server string = Samba 3.5.11 on Ubuntu 11.10
+passdb backend = tdbsam
+guest user = maicon
+security = share
+#A pasta a seguir está sendo compartilhada
+#sem senha alguma, e com total controlerelativo
+#a edição dos arquivos.
+[Nome da pasta]
+comment = Be free
+path = /home/maicon/Documentos/free
+public = yes
+directory mask = 0777
+create mask = 0777
+guest ok = yes
+writable = yes
+#Este será o compartilhamento protegido com senha.
+[PROTEGIDO]
+comment = Arquivos pessoais
+path = /home/maicon
+public = no
+browseable = no
+writable = yes

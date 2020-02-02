@@ -1,0 +1,4 @@
+https://www.vultr.com/docs/install-gui-environment-for-ubuntu
+
+
+Instalar XAMPP por linha de comando: sudo apt-get install lamp-server^

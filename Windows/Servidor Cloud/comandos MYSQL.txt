@@ -1,0 +1,34 @@
+
+COMANDOS SQL linha de comando:
+Verifificar status(rodando ou nao) - /etc/init.d/mysql status
+
+Inicializar ou parar - /etc/init.d/mysql start ou stop
+
+Acessar o MYSQL - mysql -u root -p  
+{
+	Criar banco de dados - create database "nomedibanco";
+	Mostrar bancos existentes - show databases;
+	Selecionar banco - use "nomedobanco";
+	Mostrar tabelas do banco selecionado - show tables;
+	Excluir banco - drop database "nomedobanco";
+}
+
+Exportar banco de dados - mysqldump -u root -p "nomedobanco" > /home/user/meubanco.sql 
+
+Importar
+{
+	Criar banco de dados com o nome do banco0 que vai importar
+	Importar banco de dados - mysql -u root -p chamados < /home/chamados.sql 
+	
+	
+}
+
+Criar usuário e atribuir todos os privilégios:
+mysql -u root -p 
+CREATE USER 'novousuario'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON * . * TO 'novousuario'@'localhost';
+
+
+Mudar senha padrão do root:
+mysql -u root mysql
+SET PASSWORD FOR root@localhost=PASSWORD('NOVASENHA');

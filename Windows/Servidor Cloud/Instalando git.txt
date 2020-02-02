@@ -1,0 +1,7 @@
+Debian-based linux systems
+Open a terminal window. Copy & paste the following into the terminal window and hit Return. You may be prompted to enter your password.
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install git
+You can use Git now.

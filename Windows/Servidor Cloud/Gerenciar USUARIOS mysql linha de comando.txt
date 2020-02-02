@@ -1,0 +1,48 @@
+Como criar um Novo Usuário
+Na parte 1 do tutorial do MySQL, nós fizemos toda a edição no MySQL como usuário root, com acesso total a todos as bases de dados. No entanto, em casos onde mais restrições possam ser necessárias, existem maneiras de criar usuários com permissões personalizadas.
+
+Vamos começar criando um novo usuário dentro do shell do MySQL:
+
+CREATE USER 'novousuario'@'localhost' IDENTIFIED BY 'password';
+Infelizmente, nesse momento o novousuario não tem permissão para fazer nada com as bases de dados. Na verdade, se o novousuario tentar fazer login (com a senha password), ele não será capaz de chegar ao shell do MySQL.
+
+Portanto, a primeira coisa a fazer é fornecer ao usuário o acesso às informações que ele vai precisar.
+
+GRANT ALL PRIVILEGES ON * . * TO 'novousuario'@'localhost';
+Os asteriscos neste comando referem-se ao banco de dados e à tabela (respectivamente) que eles podem acessar - este comando específico permite ao usuário ler, editar, executar e realizar todas as tarefas em todas as bases de dados e tabelas.
+
+Uma vez finalizadas as permissões que você quer definir para os seus novos usuários, certifique-se sempre de recarregar todos os privilégios.
+
+FLUSH PRIVILEGES;
+Suas alterações agora estarão em vigor.
+
+Como conceder permissões de usuário diferentes
+Aqui está uma pequena lista de outras possíveis permissões comuns que os usuários podem utilizar.
+
+ALL PRIVILEGES- como vimos anteriormente, isso daria a um usuário do MySQL todo o acesso a uma determinada base de dados (ou se nenhuma base de dados for selecionada, todo o sistema)
+CREATE- permite criar novas tabelas ou bases de dados
+DROP- permite deletar tableas ou bases de dados
+DELETE- permite deletar linhas das tabelas
+INSERT- permite inserir linhas nas tabelas
+SELECT- permite utilizar o comando Select para ler bases de dados
+UPDATE- permite atualizar linhas das tabelas
+GRANT OPTION- permite conceder ou revogar privilégios de outros usuários 
+Para dar uma permissão a um usuário específico, você pode utilizar esta estrutura:
+
+GRANT [tipo de permissão] ON [nome da base de dados].[nome da tabela] TO ‘[nome do usuário]’@'localhost’;
+Se você quer dar a ele acesso a qualquer base de dados ou a qualquer tabela, certifique-se de colocar um asterisco (*) no lugar do nome da base de dados ou do nome da tabela.
+
+Cada vez que você atualizar ou mudar uma permissão certifique-se de utilizar o comando Flush Privileges.
+
+Se você precisar revogar uma permissão, a estrutura é quase idêntica a concedê-la:
+
+REVOKE [tipo de permissão] ON [nome da base de dados].[nome da tabela] FROM ‘[nome do usuário]’@‘localhost’;
+Assim como você pode deletar bases de dados com o DROP, você pode utilizar o DROP para excluir um usuário completamente:
+
+DROP USER ‘demo’@‘localhost’;
+Para testar seu novo usuário, faça logout digitando
+
+quit 
+e faça login de volta com este comando no terminal:
+
+mysql -u [nome do usuário]-p

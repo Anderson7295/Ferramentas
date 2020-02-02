@@ -1,0 +1,14 @@
+Ver acessos da pasta:
+ls -lah
+
+excluir
+rm 
+
+copiar 
+cp origem destino
+
+mover
+move origem destino
+
+mudar acessoas da pasta para acesso total:
+chmod -R 777 nomedapasta

@@ -1,0 +1,5 @@
+services samba start
+services samba stop
+
+
+(se não funcionar com samba, tentar smb)
