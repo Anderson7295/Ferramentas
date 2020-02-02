@@ -1,0 +1,5 @@
+https://www.devmedia.com.br/manipulando-o-mysql-com-o-phpmyadmin/2276
+
+https://www.devmedia.com.br/php-e-mysql-conectando-e-exibindo-dados-de-forma-rapida-dica/28526
+
+https://www.phpmyadmin.net/downloads/

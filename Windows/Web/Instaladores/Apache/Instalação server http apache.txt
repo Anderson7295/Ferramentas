@@ -1,0 +1,7 @@
+https://youtu.be/3igxd4xv_5U
+
+Colar a pasta completa no diretório onde vai rodar
+
+instalar como serviço:  httpd.exe -k install
+
+iniciar o serviço.
